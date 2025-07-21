@@ -1,0 +1,28 @@
+{
+  "name": "file-watcher-dashboard",
+  "version": "1.0.0",
+  "description": "Monitors one or more directories on your machine, generates AI-powered summaries & tags for every file (and folder), and serves a lightweight web UI for browsing, searching, and editing Markdown in-place.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon src/server.js",
+    "start": "node src/server.js",
+    "add-path": "node scripts/add-path.js",
+    "remove-path": "node scripts/remove-path.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chokidar": "^4.0.3",
+    "express": "^5.1.0",
+    "htmx.org": "^2.0.6",
+    "js-yaml": "^4.1.0",
+    "lowdb": "^7.0.1",
+    "openai": "^5.10.1",
+    "simplemde": "^1.11.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}

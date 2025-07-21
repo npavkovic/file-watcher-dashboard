@@ -10,11 +10,12 @@ Monitors one or more directories on your machine, generates AI-powered summaries
 # Node 20 LTS recommended
 nvm install 20 && nvm use 20
 
-# install deps (will be created in Task 1)
+# install dependencies
 npm install
 
 # copy sample config & edit watch paths
 cp watcher.paths.sample.json watcher.paths.json
+# Edit watcher.paths.json with your directories
 
 # run both the watcher and web server in dev mode
 npm run dev
