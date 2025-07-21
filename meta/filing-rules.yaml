@@ -1,24 +1,117 @@
 classification:
   model: "gpt-4o-mini"
   system_prompt: |
-    You are a filing assistant. Choose ONE category id.
+    You are a filing assistant for the file-watcher-dashboard intake system. This dashboard monitors multiple repositories and needs to classify incoming files appropriately.
+    
+    Analyze the content and classify it into ONE of these categories based on the primary focus:
+    
+    FEATURE_BRIEF: High-level feature proposals, product ideas, capability descriptions
+    TECHNICAL_SPEC: Detailed technical specifications, implementation plans, architecture documents
+    BUG_REPORT: Bug descriptions, error reports, issue documentation
+    RESEARCH: Research findings, analysis, investigations, background information
+    DOCUMENTATION: User guides, API docs, README files, how-to guides
+    TEST_FILE: Test cases, test data, quality assurance documents
+    CONFIG: Configuration files, settings, environment specifications
+    BLOG_IDEA: Blog post ideas, content proposals, writing drafts
+    MEETING_NOTES: Meeting summaries, discussion notes, decision records
+    TODO_ITEM: Task lists, action items, work planning documents
+    
+    Respond with exactly one category ID: feature_brief, technical_spec, bug_report, research, documentation, test_file, config, blog_idea, meeting_notes, or todo_item
+    
   categories:
-    blog_idea:
-      name: "Blog Idea"
-      description: "Short proposal for a blog post."
-      destination: "meta/blog-ideas/"
-      front_matter_overrides:
-        status: "Idea"
-        type: "Blog Idea"
     feature_brief:
       name: "Feature Brief"
-      description: "High-level feature rationale."
+      description: "High-level feature proposals, product ideas, new capability descriptions"
+      keywords: ["feature", "proposal", "idea", "capability", "product", "enhancement", "request"]
       destination: "meta/specs/feature-briefs/"
       front_matter_overrides:
+        type: "Feature Brief"
         status: "Needs-Spec"
-        type:   "Feature Brief"
+        
+    technical_spec:
+      name: "Technical Specification"
+      description: "Detailed technical specifications, implementation plans, architecture documents"
+      keywords: ["specification", "implementation", "architecture", "technical", "design", "API", "system"]
+      destination: "meta/specs/technical/"
+      front_matter_overrides:
+        type: "Technical Spec"
+        status: "Draft"
+        
+    bug_report:
+      name: "Bug Report"
+      description: "Bug descriptions, error reports, issue documentation, problem reports"
+      keywords: ["bug", "error", "issue", "problem", "defect", "broken", "fix"]
+      destination: "meta/issues/"
+      front_matter_overrides:
+        type: "Bug Report"
+        status: "Reported"
+        priority: "medium"
+        
+    research:
+      name: "Research Document"
+      description: "Research findings, analysis, investigations, background information"
+      keywords: ["research", "analysis", "investigation", "study", "findings", "discovery", "exploration"]
+      destination: "meta/research/"
+      front_matter_overrides:
+        type: "Research"
+        status: "Draft"
+        
+    documentation:
+      name: "Documentation"
+      description: "User guides, API documentation, README files, how-to guides"
+      keywords: ["documentation", "guide", "manual", "README", "tutorial", "instructions", "howto"]
+      destination: "meta/docs/"
+      front_matter_overrides:
+        type: "Documentation"
+        status: "Draft"
+        
+    test_file:
+      name: "Test File"
+      description: "Test cases, test data, quality assurance documents, test plans"
+      keywords: ["test", "testing", "QA", "quality", "validation", "verification", "scenario"]
+      destination: "meta/tests/"
+      front_matter_overrides:
+        type: "Test Document"
+        status: "Draft"
+        
+    config:
+      name: "Configuration"
+      description: "Configuration files, settings, environment specifications"
+      keywords: ["config", "configuration", "settings", "environment", "setup", "options", "parameters"]
+      destination: "meta/config/"
+      front_matter_overrides:
+        type: "Configuration"
+        status: "Active"
+        
+    blog_idea:
+      name: "Blog Idea"
+      description: "Blog post ideas, content proposals, article drafts"
+      keywords: ["blog", "article", "post", "content", "writing", "publish", "story"]
+      destination: "meta/blog-ideas/"
+      front_matter_overrides:
+        type: "Blog Idea"
+        status: "Idea"
+        
+    meeting_notes:
+      name: "Meeting Notes"
+      description: "Meeting summaries, discussion notes, decision records"
+      keywords: ["meeting", "notes", "discussion", "minutes", "summary", "decision", "agenda"]
+      destination: "meta/meetings/"
+      front_matter_overrides:
+        type: "Meeting Notes"
+        status: "Recorded"
+        
+    todo_item:
+      name: "Todo Item"
+      description: "Task lists, action items, work planning documents"
+      keywords: ["todo", "task", "action", "plan", "work", "assignment", "activity"]
+      destination: "meta/todo/"
+      front_matter_overrides:
+        type: "Todo Item"
+        status: "Pending"
 
 intake_defaults:
   destination: "meta/todo/"
   front_matter_overrides:
-    status: "Needs-Triage" 
+    status: "Needs-Triage"
+    type: "Unclassified Document"
