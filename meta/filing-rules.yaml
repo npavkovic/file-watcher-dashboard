@@ -1,0 +1,24 @@
+classification:
+  model: "gpt-4o-mini"
+  system_prompt: |
+    You are a filing assistant. Choose ONE category id.
+  categories:
+    blog_idea:
+      name: "Blog Idea"
+      description: "Short proposal for a blog post."
+      destination: "meta/blog-ideas/"
+      front_matter_overrides:
+        status: "Idea"
+        type: "Blog Idea"
+    feature_brief:
+      name: "Feature Brief"
+      description: "High-level feature rationale."
+      destination: "meta/specs/feature-briefs/"
+      front_matter_overrides:
+        status: "Needs-Spec"
+        type:   "Feature Brief"
+
+intake_defaults:
+  destination: "meta/todo/"
+  front_matter_overrides:
+    status: "Needs-Triage" 
