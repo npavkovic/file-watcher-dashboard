@@ -47,9 +47,10 @@ data/
 *.db
 *.sqlite
 
-# Logs
-logs
+# Logs (but allow meta/logs/ for handoff documentation)
+logs/
 *.log
+!meta/logs/
 
 # Runtime configuration
 watcher.paths.json
